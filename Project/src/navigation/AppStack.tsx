@@ -1,19 +1,33 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import DrawerStack from './DrawerStack';
+import DrawerStack, { DrawerStackProps } from './DrawerStack';
+import ProductDetail from '../features/productDetail/ProductDetail';
+import { Product } from '../features/products/components/PrdoutcCard';
+import ModalStack, { ModalStackProps } from './ModalStack';
 
-const Stack = createStackNavigator()
+export type AppStackProps = {
+  DrawerStack: DrawerStackProps,
+  ModalStack: NavigatorScreenParams<ModalStackProps>
+  ProductDetail: {
+    product: Product
+  }
+}
+
+const Stack = createStackNavigator<AppStackProps>()
 
 const AppStack = () => {
   return (
     <NavigationContainer>
         <Stack.Navigator>
         <Stack.Screen
-          name="Drawer"
+          name="DrawerStack"
           component={DrawerStack}
           options={{headerShown: false}}
         />
+        <Stack.Screen name='ProductDetail' component={ProductDetail}/>
+        <Stack.Screen name='ModalStack' component={ModalStack}/>
+
         </Stack.Navigator>
     </NavigationContainer>
   )

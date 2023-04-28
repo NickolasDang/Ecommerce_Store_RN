@@ -6,18 +6,39 @@ import Colors from '../../constants/Colors';
 import ProductCard, { Product } from './components/PrdoutcCard';
 import ProductSearchBar from './components/ProductSearchBar';
 import { fetchProducts } from './slice/ProductsSlice';
+import { StackScreenProps } from '@react-navigation/stack';
+import { DrawerStackProps } from '../../navigation/DrawerStack';
+import { AppStackProps } from '../../navigation/AppStack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import HeaderButton from '../../components/HeaderButton';
+import { MY_CART_ICON_WHITE_IMG } from '../../constants/Images';
 
-const Main = () => {
+type Props = CompositeScreenProps<
+  StackScreenProps<DrawerStackProps, 'Main'>,
+  StackScreenProps<AppStackProps>
+>
+
+const Main = ({navigation}: Props) => {
   const data = useAppSelector(state => state.products);
 
   const dispatch = useAppDispatch();
 
+  const setHeader = () => {
+    navigation.setOptions({
+        title: 'Ecommerce Store',
+          headerRight: () => (
+            <HeaderButton img={MY_CART_ICON_WHITE_IMG}/>
+          )
+    })
+  }
+
   useEffect(() => {
     dispatch(fetchProducts());
+    setHeader()
   }, []);
 
   const navigateToProductDetail = (product: Product) => {
-   // navigation.navigate('ProductDetail', product);
+    navigation.navigate('ProductDetail', {product});
   };
 
   const navigateToMyCart = () => {

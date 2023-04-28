@@ -4,7 +4,11 @@ import { StyleSheet } from 'react-native'
 import Main from '../features/products/Main'
 import Colors from '../constants/Colors'
 
-const Drawer = createDrawerNavigator()
+export type DrawerStackProps = {
+  Main: undefined
+}
+
+const Drawer = createDrawerNavigator<DrawerStackProps>()
 
 const DrawerStack = () => {
   return (
@@ -20,7 +24,7 @@ const DrawerStack = () => {
     }}>
       
       <Drawer.Screen
-      name='Ecommerce Store'
+      name='Main'
       component={Main} />
     </Drawer.Navigator>
   )

@@ -12,7 +12,8 @@ export type Product = {
     name: String,
     price: String,
     priceBefore?: String
-    percentOff?: String
+    percentOff?: String,
+    imgCarousel: []
 }
 
 interface Props {
