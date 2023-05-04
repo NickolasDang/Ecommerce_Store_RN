@@ -4,7 +4,7 @@ import Colors from '../../constants/Colors';
 
 interface Props {
     text: String,
-    onPress: () => void,
+    onPress?: () => void | undefined,
     style?: StyleProp<ViewStyle> | undefined
 }
 

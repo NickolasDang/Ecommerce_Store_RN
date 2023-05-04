@@ -7,6 +7,7 @@ export const LOGIN_DIALOG_IMG = require('../../assets/images/loginDialog.png');
 export const SUCCESS_DIALOG_IMG = require('../../assets/images/successDialog.png');
 export const ARROW_LEFT_BUTTON_IMG = require('../../assets/images/arrowLeft.png')
 export const ARROW_RIGHT_BUTTON_IMG = require('../../assets/images/arrowRight.png')
+export const BACK_ARROW_ICON_IMG = require('../../assets/images/backArrowIcon.png')
 
 //Drawer Icons
 export const CALL_ICON_IMG = require('../../assets/images/drawer/callIcon.png');
