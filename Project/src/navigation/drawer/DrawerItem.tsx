@@ -4,7 +4,7 @@ import React from 'react';
 interface Props {
     icon: any,
     text: string,
-    onPress?: () => void | undefined
+    onPress?: () => void | Promise<void> | undefined
 }
 
 const DrawerItem = ({icon, text, onPress}: Props) => {

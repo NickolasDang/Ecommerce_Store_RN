@@ -13,8 +13,22 @@ import {
     SHARE_ICON_IMG,
 } from '../../constants/Images';
 import DrawerItem from './DrawerItem';
+import Share from 'react-native-share'
   
   const AppDrawer = ({navigation}: any) => {
+
+    const share = async () => {
+        const shareOptions = {
+            message: "Hello world!",
+            url: 'https://github.com/react-native-share/react-native-share'
+        }
+        try {
+            await Share.open(shareOptions)
+        } catch(error) {
+            console.log('Error: ', error)
+        }
+    }
+
     return (
       <View style={{flex: 1}}>
 
@@ -44,7 +58,7 @@ import DrawerItem from './DrawerItem';
         </View>
   
         <View style={{paddingTop: 20}}>
-          <DrawerItem icon={SHARE_ICON_IMG} text={'Share'} />
+          <DrawerItem icon={SHARE_ICON_IMG} text={'Share'} onPress={() => share()}/>
         </View>
       </View>
     );
