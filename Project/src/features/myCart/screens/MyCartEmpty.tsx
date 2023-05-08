@@ -6,10 +6,19 @@ import BaseTitleText from '../../../components/base/BaseTitleText';
 import { EPMTY_CART_IMG } from '../../../constants/Images';
 import { StackScreenProps } from '@react-navigation/stack';
 import { MyCartStackProps } from '../../../navigation/MyCartStack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { AppStackProps } from '../../../navigation/AppStack';
 
-type Props = StackScreenProps<MyCartStackProps, 'MyCartEmpty'>
+type Props = CompositeScreenProps< 
+  StackScreenProps<MyCartStackProps, 'MyCartEmpty'>,
+  StackScreenProps<AppStackProps>
+  >
 
 const MyCartEmpty = ({navigation}: Props) => {
+  const navigateToMain = () => {
+    navigation.navigate('DrawerStack', {screen: 'Main'})
+  }
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
@@ -20,7 +29,7 @@ const MyCartEmpty = ({navigation}: Props) => {
           style={{marginTop: 5}}
         />
         <View style={{width: '100%', paddingHorizontal: 20}}>
-          <BaseButton text={'shop now'} style={styles.loginButton} />
+          <BaseButton text={'shop now'} style={styles.loginButton} onPress={navigateToMain}/>
         </View>
       </View>
     </SafeAreaView>

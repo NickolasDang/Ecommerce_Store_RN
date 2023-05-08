@@ -1,22 +1,24 @@
+import { CompositeScreenProps } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
-import { useAppDispatch } from '../../../app/hooks';
-import { authSlice } from '../../auth/slice/authSlice';
-import { AVATAR_IMG } from '../../../constants/Images';
-import BaseTitleText from '../../../components/base/BaseTitleText';
-import BaseDescriptionText from '../../../components/base/BaseDescriptionText';
 import BaseButton from '../../../components/base/BaseButton';
+import BaseDescriptionText from '../../../components/base/BaseDescriptionText';
 import BaseLinkText from '../../../components/base/BaseLinkText';
-import { StackScreenProps } from '@react-navigation/stack';
+import BaseTitleText from '../../../components/base/BaseTitleText';
+import { AVATAR_IMG } from '../../../constants/Images';
+import { AppStackProps } from '../../../navigation/AppStack';
 import { MyCartStackProps } from '../../../navigation/MyCartStack';
 
-type Props = StackScreenProps<MyCartStackProps, 'MyCartLoginFirst'>
+type Props = CompositeScreenProps< 
+  StackScreenProps<MyCartStackProps, 'MyCartLoginFirst'>,
+  StackScreenProps<AppStackProps>
+>
 
 const MyCartLoginFirst = ({navigation}: Props) => {
-  const dispatch = useAppDispatch();
 
-  const login = () => {
-    dispatch(authSlice.actions.login());
+  const navigateToLogin = () => {
+    navigation.navigate('Login')
   };
 
   return (
@@ -36,7 +38,7 @@ const MyCartLoginFirst = ({navigation}: Props) => {
           <BaseButton
             text={'Login now'}
             style={styles.loginButton}
-            onPress={() => login()}
+            onPress={() => navigateToLogin()}
           />
         </View>
         <BaseLinkText text={'New here? Sign Up'} textStyle={{marginTop: 25}} />

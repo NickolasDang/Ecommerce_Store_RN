@@ -5,13 +5,15 @@ import DrawerStack, { DrawerStackProps } from './DrawerStack';
 import ProductDetail from '../features/productDetail/ProductDetail';
 import { Product } from '../features/products/components/PrdoutcCard';
 import ModalStack, { ModalStackProps } from './ModalStack';
+import Login from '../features/auth/screens/Login';
 
 export type AppStackProps = {
-  DrawerStack: DrawerStackProps,
+  DrawerStack: NavigatorScreenParams<DrawerStackProps>
   ModalStack: NavigatorScreenParams<ModalStackProps>
   ProductDetail: {
     product: Product
   }
+  Login: undefined
 }
 
 const Stack = createStackNavigator<AppStackProps>()
@@ -27,7 +29,7 @@ const AppStack = () => {
         />
         <Stack.Screen name='ProductDetail' component={ProductDetail}/>
         <Stack.Screen name='ModalStack' component={ModalStack}/>
-
+        <Stack.Screen name='Login' component={Login}/>
         </Stack.Navigator>
     </NavigationContainer>
   )

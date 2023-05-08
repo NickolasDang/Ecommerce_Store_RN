@@ -27,7 +27,7 @@ const Main = ({navigation}: Props) => {
     navigation.setOptions({
         title: 'Ecommerce Store',
           headerRight: () => (
-            <HeaderButton img={MY_CART_ICON_WHITE_IMG}/>
+            <HeaderButton img={MY_CART_ICON_WHITE_IMG} onPress={() => navigateToMyCart()}/>
           )
     })
   }
@@ -42,7 +42,7 @@ const Main = ({navigation}: Props) => {
   };
 
   const navigateToMyCart = () => {
-   // navigation.navigate('MyCart', {screen: 'MyCartEmpty'});
+    navigation.navigate('MyCartStack', {screen: 'MyCartEmpty'});
   };
 
   return (
