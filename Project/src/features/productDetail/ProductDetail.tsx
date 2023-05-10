@@ -17,13 +17,24 @@ import Colors from '../../constants/Colors';
 import { MY_CART_ICON_WHITE_IMG, MY_WISH_LIST_ICON_WHITE_IMG } from '../../constants/Images';
 import { AppStackProps } from '../../navigation/AppStack';
 import ImageCarousel from './components/imageCarousel/ImageCarousel';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import cartSlice from '../myCart/slice/cartSlice';
+import { CartItem } from '../myCart/data/CartItem';
+import { store } from '../../app/store';
 
 type Props = StackScreenProps<AppStackProps, "ProductDetail">
 
 const ProductDetail = ({route, navigation}: Props) => {
   const {product} = route.params;
-
   const [color, setColor] = useState('');
+  const isCartEmpty = useAppSelector(state => state.cart.cart.cartItems.length === 0)
+
+  const dispatch = useAppDispatch()
+
+  const navigateToMyCart = () => {
+    const screenName = isCartEmpty ? 'MyCartEmpty' : 'MyCart'
+    navigation.navigate('DrawerStack', {screen: 'MyCartStack', params: {screen: screenName}});
+  };
 
   const setHeader = () => {
     navigation.setOptions({
@@ -39,7 +50,7 @@ const ProductDetail = ({route, navigation}: Props) => {
           headerRight: () => (
             <View style={{flexDirection: 'row'}}>
             <HeaderButton img={MY_WISH_LIST_ICON_WHITE_IMG}/>
-            <HeaderButton img={MY_CART_ICON_WHITE_IMG}/>
+            <HeaderButton img={MY_CART_ICON_WHITE_IMG} onPress={() => navigateToMyCart()}/>
             </View>
           )
     })
@@ -47,6 +58,14 @@ const ProductDetail = ({route, navigation}: Props) => {
 
   const addProduct = () => {
     const screenName = color == '' ? 'SelectColorDialog' : 'ProductAddedDialog';
+    if(screenName === 'ProductAddedDialog') {
+      const cartItem: CartItem = {
+        id: `${Math.floor(Math.random() * 100)}`,
+        item: product,
+        amount: 1
+      }
+      dispatch(cartSlice.actions.addToCart(cartItem))
+    }
     navigation.navigate('ModalStack', {screen: screenName});
   };
 

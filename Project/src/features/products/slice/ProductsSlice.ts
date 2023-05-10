@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Product } from '../components/PrdoutcCard';
+import { Product } from '../data/Product';
 
 type ProductsState = {
     loading: boolean,

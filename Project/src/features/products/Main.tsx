@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, View } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Colors from '../../constants/Colors';
-import ProductCard, { Product } from './components/PrdoutcCard';
+import ProductCard from './components/PrdoutcCard';
 import ProductSearchBar from './components/ProductSearchBar';
 import { fetchProducts } from './slice/ProductsSlice';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -12,6 +12,7 @@ import { AppStackProps } from '../../navigation/AppStack';
 import { CompositeScreenProps } from '@react-navigation/native';
 import HeaderButton from '../../components/HeaderButton';
 import { MY_CART_ICON_WHITE_IMG } from '../../constants/Images';
+import { Product } from './data/Product';
 
 type Props = CompositeScreenProps<
   StackScreenProps<DrawerStackProps, 'Main'>,
@@ -20,6 +21,8 @@ type Props = CompositeScreenProps<
 
 const Main = ({navigation}: Props) => {
   const data = useAppSelector(state => state.products);
+   //Problem here. Data is not updated correctly
+  const isCartEmpty = useAppSelector(state => state.cart.cart.cartItems.length === 0)
 
   const dispatch = useAppDispatch();
 
@@ -42,7 +45,9 @@ const Main = ({navigation}: Props) => {
   };
 
   const navigateToMyCart = () => {
-    navigation.navigate('MyCartStack', {screen: 'MyCartEmpty'});
+    console.log("LOG:", isCartEmpty)
+    const screenName = isCartEmpty ? 'MyCartEmpty' : 'MyCart'
+    navigation.navigate('DrawerStack', {screen: 'MyCartStack', params: {screen: screenName}});
   };
 
   return (

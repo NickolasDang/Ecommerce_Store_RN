@@ -83,7 +83,7 @@ const AnimatedButton = ({text, style, onPress, isSuccess}: Props) => {
   }, [isSuccess])
 
   return (
-    <TouchableWithoutFeedback onPress={handleOnPress} disabled={loading}>
+    <TouchableWithoutFeedback onPress={onPress} disabled={loading}>
       <Animated.View style={[styles.buttonContainer, rContainerStyle]}>
         {!loading && !error ? (
           <Animated.Text style={[styles.buttonText]}>{text}</Animated.Text>

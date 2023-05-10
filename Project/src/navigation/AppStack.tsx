@@ -3,9 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import DrawerStack, { DrawerStackProps } from './DrawerStack';
 import ProductDetail from '../features/productDetail/ProductDetail';
-import { Product } from '../features/products/components/PrdoutcCard';
 import ModalStack, { ModalStackProps } from './ModalStack';
 import Login from '../features/auth/screens/Login';
+import { Product } from '../features/products/data/Product';
 
 export type AppStackProps = {
   DrawerStack: NavigatorScreenParams<DrawerStackProps>
@@ -28,7 +28,7 @@ const AppStack = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen name='ProductDetail' component={ProductDetail}/>
-        <Stack.Screen name='ModalStack' component={ModalStack}/>
+        <Stack.Screen name='ModalStack' component={ModalStack} options={{headerShown: false}}/>
         <Stack.Screen name='Login' component={Login}/>
         </Stack.Navigator>
     </NavigationContainer>

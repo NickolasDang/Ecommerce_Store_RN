@@ -23,10 +23,11 @@ const MyCartConfirmation = ({navigation}: Props) => {
         text={
           'Please check your email for more details. For any questions and further information please contact our customer support.'
         }
-        style={{marginTop: 5}}
+        style={{marginTop: 5, textAlign: 'center'}}
+        containerStyle={{width: '80%'}}
       />
       <View style={{width: '100%', paddingHorizontal: 20}}>
-        <BaseButton text={'continue shopping'} style={styles.loginButton}/>
+        <BaseButton text={'continue shopping'} style={styles.loginButton} onPress={navigation.goBack}/>
       </View>
     </SafeAreaView>
   );

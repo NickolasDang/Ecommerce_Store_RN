@@ -8,6 +8,8 @@ export const SUCCESS_DIALOG_IMG = require('../../assets/images/successDialog.png
 export const ARROW_LEFT_BUTTON_IMG = require('../../assets/images/arrowLeft.png')
 export const ARROW_RIGHT_BUTTON_IMG = require('../../assets/images/arrowRight.png')
 export const BACK_ARROW_ICON_IMG = require('../../assets/images/backArrowIcon.png')
+export const MY_ORDERS_LOGIN_FIRST_IMG = require('../../assets/images/myOrdersLoginFirst.png')
+export const DELETE_ICON_IMG = require('../../assets/images/deleteIcon.png')
 
 //Drawer Icons
 export const CALL_ICON_IMG = require('../../assets/images/drawer/callIcon.png');

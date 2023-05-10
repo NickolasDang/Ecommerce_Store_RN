@@ -5,16 +5,7 @@ import Price from '../../../components/product/Price';
 import ProductName from '../../../components/product/ProductName';
 import {StyleSheet} from 'react-native';
 import Colors from '../../../constants/Colors';
-
-export type Product = {
-    id: String,
-    img: any,
-    name: String,
-    price: String,
-    priceBefore?: String
-    percentOff?: String,
-    imgCarousel: []
-}
+import { Product } from '../data/Product';
 
 interface Props {
     product: Product,

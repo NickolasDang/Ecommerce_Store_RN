@@ -1,21 +1,21 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'
+import { NavigatorScreenParams } from '@react-navigation/native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import Main from '../features/products/Main'
 import Colors from '../constants/Colors'
-import MyCartStack, { MyCartStackProps } from './MyCartStack'
 import MyProfile from '../features/myProfile/screens/MyProfile'
 import MyWishList from '../features/myWishList/screens/MyWishList'
-import MyOrders from '../features/myOrders/screens/MyOrders'
+import Main from '../features/products/Main'
+import MyCartStack, { MyCartStackProps } from './MyCartStack'
+import MyOrdersStack, { MyOrdersStackProps } from './MyOrdersStack'
 import AppDrawer from './drawer/AppDrawer'
-import { NavigatorScreenParams } from '@react-navigation/native'
 
 export type DrawerStackProps = {
   Main: undefined
   MyProfile: undefined
   MyWishList: undefined
   MyCartStack: NavigatorScreenParams<MyCartStackProps>
-  MyOrders: undefined
+  MyOrdersStack: NavigatorScreenParams<MyOrdersStackProps>
 }
 
 const Drawer = createDrawerNavigator<DrawerStackProps>()
@@ -38,9 +38,9 @@ const DrawerStack = () => {
       
       <Drawer.Screen name='Main' component={Main} />
       <Drawer.Screen name='MyProfile' component={MyProfile}/>
-      <Drawer.Screen name='MyWishList' component={MyWishList}/>
+      <Drawer.Screen name='MyWishList' component={MyWishList} options={{headerShown: false}}/>
       <Drawer.Screen name='MyCartStack' component={MyCartStack} options={{headerShown: false}}/>
-      <Drawer.Screen name='MyOrders' component={MyOrders}/>
+      <Drawer.Screen name='MyOrdersStack' component={MyOrdersStack} options={{headerShown: false}}/>
     </Drawer.Navigator>
   )
 }

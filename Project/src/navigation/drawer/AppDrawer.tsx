@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import Share from 'react-native-share';
 import BaseHeaderText from '../../components/base/BaseHeaderText';
 import BaseTitleText from '../../components/base/BaseTitleText';
 import Colors from '../../constants/Colors';
@@ -13,7 +14,6 @@ import {
     SHARE_ICON_IMG,
 } from '../../constants/Images';
 import DrawerItem from './DrawerItem';
-import Share from 'react-native-share'
   
   const AppDrawer = ({navigation}: any) => {
 
@@ -44,7 +44,9 @@ import Share from 'react-native-share'
             }/>
             <DrawerItem icon={MY_WISH_LIST_ICON_IMG} text='My Wish List'/>
             <DrawerItem icon={MY_CART_ICON_IMG} text='My Cart'/>
-            <DrawerItem icon={MY_ORDERS_ICON_IMG} text='My Orders'/>
+            <DrawerItem icon={MY_ORDERS_ICON_IMG} text='My Orders' onPress={
+                () => navigation.navigate('MyOrdersStack')
+            }/>
           </View>
   
         <View style={styles.container}>

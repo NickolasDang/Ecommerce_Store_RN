@@ -34,14 +34,10 @@ const Login = ({navigation}: Props) => {
 
   //TODO: Still not working properly. Need to find how to manage state of animated button 
   const validation = () => {
-    if (email === '' && password === '') {
-      setLogged(false)
-    } else {
         setLogged(true)
         login()
-    }
   };
-
+8
   useEffect(() => {
     setUpHeader()
   }, [])
