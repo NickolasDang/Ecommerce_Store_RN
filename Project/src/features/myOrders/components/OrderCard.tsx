@@ -9,10 +9,11 @@ import OrderItem from './OrderItem'
 import { Order } from '../data/Order'
 
 type Props = {
-    order: Order
+    order: Order,
+    onViewDetailsPressed?: () => void | undefined
 }
 
-const OrderCard = ({order}: Props) => {
+const OrderCard = ({order, onViewDetailsPressed}: Props) => {
 
   return (
     <Surface style={styles.container}>
@@ -22,7 +23,7 @@ const OrderCard = ({order}: Props) => {
         <FlatList data={order.orderItems} renderItem={ ({item}) => (
           <OrderItem orderItem={item}/>
           )}/>
-        <BaseLinkText text='View Oder Details' textStyle={{marginTop: 20}}/>
+        <BaseLinkText text='View Oder Details' textStyle={{marginTop: 20}} onPress={onViewDetailsPressed}/>
     </Surface>
   )
 }
