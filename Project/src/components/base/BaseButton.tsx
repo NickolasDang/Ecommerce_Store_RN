@@ -3,12 +3,12 @@ import React from 'react';
 import Colors from '../../constants/Colors';
 
 interface Props {
-    text: String,
+    text: string | undefined,
     onPress?: () => void | undefined,
     style?: StyleProp<ViewStyle> | undefined
 }
 
-const BaseButton: React.FC<Props> = ({text, onPress, style}) => {
+const BaseButton = ({text, onPress, style}: Props) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.button, style]}>

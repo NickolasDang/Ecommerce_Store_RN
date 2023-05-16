@@ -40,7 +40,7 @@ import DrawerItem from './DrawerItem';
             containerStyle={styles.titleContainer}/>
 
             <DrawerItem icon={MY_PROFILE_ICON_IMG} text='My Profile' onPress={
-                () => navigation.navigate('MyProfile')
+                () => navigation.navigate('MyProfileStack', {screen: 'MyProfile'})
             }/>
             <DrawerItem icon={MY_WISH_LIST_ICON_IMG} text='My Wish List'/>
             <DrawerItem icon={MY_CART_ICON_IMG} text='My Cart'/>

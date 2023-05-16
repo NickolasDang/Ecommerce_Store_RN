@@ -33,6 +33,6 @@ export const styles = StyleSheet.create({
     padding: 0,
     fontSize: 15,
     fontFamily: 'Roboto',
-    color: Colors.neutral1000,
+    color: Colors.blue500,
   },
 });

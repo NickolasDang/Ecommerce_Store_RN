@@ -1,18 +1,30 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import Colors from '../constants/Colors';
 import BaseButton from './base/BaseButton';
-import BaseTitleText from './base/BaseTitleText';
 import BaseDescriptionText from './base/BaseDescriptionText';
+import BaseTitleText from './base/BaseTitleText';
 
 interface Props {
     icon?: any | undefined,
     title: string ,
     description?: string | undefined,
-    onPress: () => void
+    negativeButtonText?: string | undefined
+    positiveButtonText?: string | undefined,
+    onNegativeButtonPress?: () => void | undefined,
+    onPossitiveButtonPress?: () => void | undefined
 }
 
-const OneOptionDialog = ({icon, title, description, onPress}: Props) => {
+const TwoOptionsDialog = ({
+    icon,
+    title,
+    description,
+    negativeButtonText,
+    positiveButtonText,
+    onNegativeButtonPress,
+    onPossitiveButtonPress
+}: Props) => {
+
   return (
     <View style={styles.background}>
       <View style={styles.container}>
@@ -21,13 +33,16 @@ const OneOptionDialog = ({icon, title, description, onPress}: Props) => {
         {description && (
           <BaseDescriptionText text={description} style={{marginTop: 10}} />
         )}
-        <BaseButton text={'ok'} style={styles.button} onPress={onPress} />
+        <View style={{flexDirection: 'row'}}>
+            <BaseButton text={negativeButtonText} style={[styles.button, {backgroundColor: Colors.red, marginRight: 5} ]} onPress={onNegativeButtonPress} />
+            <BaseButton text={positiveButtonText} style={[styles.button, {marginLeft: 5}]} onPress={onPossitiveButtonPress} />
+        </View>
       </View>
     </View>
   );
 };
 
-export default OneOptionDialog;
+export default TwoOptionsDialog;
 
 const styles = StyleSheet.create({
   background: {

@@ -7,7 +7,7 @@ import Map from './src/features/myOrders/screens/Map';
 function App() {
 
   return (
-    <Map/>
+    <AppStack/>
   );
 }
 
