@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, View } from 'react-native';
-import { Surface, Text } from 'react-native-paper';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import Colors from '../../constants/Colors';
-import ProductCard from './components/PrdoutcCard';
-import ProductSearchBar from './components/ProductSearchBar';
-import { fetchProducts } from './slice/ProductsSlice';
-import { StackScreenProps } from '@react-navigation/stack';
-import { DrawerStackProps } from '../../navigation/DrawerStack';
-import { AppStackProps } from '../../navigation/AppStack';
 import { CompositeScreenProps } from '@react-navigation/native';
-import HeaderButton from '../../components/HeaderButton';
-import { MY_CART_ICON_WHITE_IMG } from '../../constants/Images';
-import { Product } from './data/Product';
+import { StackScreenProps } from '@react-navigation/stack';
+import React, { useEffect } from 'react';
+import { FlatList, SafeAreaView, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Surface, Text } from 'react-native-paper';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import HeaderButton from '../../../components/HeaderButton';
+import Colors from '../../../constants/Colors';
+import { MY_CART_ICON_WHITE_IMG } from '../../../constants/Images';
+import { AppStackProps } from '../../../navigation/AppStack';
+import { MainStackProps } from '../../../navigation/MainStack';
+import ProductCard from '../components/PrdoutcCard';
+import ProductSearchBar from '../components/ProductSearchBar';
+import { Product } from '../data/Product';
+import { fetchProducts } from '../slice/ProductsSlice';
 
 type Props = CompositeScreenProps<
-  StackScreenProps<DrawerStackProps, 'Main'>,
+  StackScreenProps<MainStackProps, 'Main'>,
   StackScreenProps<AppStackProps>
 >
 
@@ -50,10 +51,16 @@ const Main = ({navigation}: Props) => {
     navigation.navigate('DrawerStack', {screen: 'MyCartStack', params: {screen: screenName}});
   };
 
+  const navigateToSearchScreen = () => {
+    navigation.navigate('Search')
+  }
+
   return (
     <SafeAreaView>
       <Surface style={{backgroundColor: Colors.white}}>
-        <ProductSearchBar />
+        <TouchableOpacity onPress={navigateToSearchScreen}>
+        <ProductSearchBar/>
+        </TouchableOpacity>
       </Surface>
       <View style={{marginHorizontal: 10}}>
         {data.loading && <Text>Loading</Text>}
@@ -65,7 +72,7 @@ const Main = ({navigation}: Props) => {
               justifyContent: 'space-between',
             }}
             data={data.products}
-            renderItem={ ({item}  ) => (
+            renderItem={ ({item}) => (
               <ProductCard
                 product= {item} 
                 onPress={() => navigateToProductDetail(item)}

@@ -1,14 +1,23 @@
-import React from 'react';
-import {Image, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, TextInput, View, TouchableOpacity} from 'react-native';
 import {StyleSheet} from 'react-native';
 import Colors from '../../../constants/Colors';
 import { SEARCH_ICON_IMG } from '../../../constants/Images';
 
-const ProductSearchBar = () => {
+interface Props {
+  input?: string | undefined,
+  onChageText?: (value: string) => void | undefined,
+  onSearchIconPress?: (input?: string) => void | undefined
+}
+
+const ProductSearchBar = ({input, onChageText, onSearchIconPress}: Props) => {
+
   return (
     <View style={styles.searchContainer}>
-      <Image source={SEARCH_ICON_IMG} style={styles.searchIcon}/>
-      <TextInput style={styles.textInput} />
+      <TouchableOpacity onPress={() => onSearchIconPress?.(input)}>
+        <Image source={SEARCH_ICON_IMG} style={styles.searchIcon}/>
+      </TouchableOpacity>
+      <TextInput style={styles.textInput} value={input} onChangeText={value => {onChageText?.(value)}}/>
     </View>
   );
 };

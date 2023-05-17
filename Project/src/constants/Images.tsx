@@ -7,7 +7,6 @@ export const LOGIN_DIALOG_IMG = require('../../assets/images/loginDialog.png');
 export const SUCCESS_DIALOG_IMG = require('../../assets/images/successDialog.png');
 export const ARROW_LEFT_BUTTON_IMG = require('../../assets/images/arrowLeft.png')
 export const ARROW_RIGHT_BUTTON_IMG = require('../../assets/images/arrowRight.png')
-export const BACK_ARROW_ICON_IMG = require('../../assets/images/backArrowIcon.png')
 export const MY_ORDERS_LOGIN_FIRST_IMG = require('../../assets/images/myOrdersLoginFirst.png')
 export const DELETE_ICON_IMG = require('../../assets/images/deleteIcon.png')
 export const MY_PROFILE_AVATAR = require('../../assets/images/myProfileAvatar.png')
@@ -24,3 +23,5 @@ export const SHARE_ICON_IMG = require('../../assets/images/drawer/shareIcon.png'
 //Header Icons
 export const MY_CART_ICON_WHITE_IMG = require('../../assets/images/header/myCartIcon.png')
 export const MY_WISH_LIST_ICON_WHITE_IMG = require('../../assets/images/header/myWishListIcon.png')
+export const BACK_ARROW_ICON_IMG = require('../../assets/images/backArrowIcon.png')
+export const MENU_ICON_IMG = require('../../assets/images/menuIcon.png')

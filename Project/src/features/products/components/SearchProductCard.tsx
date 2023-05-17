@@ -12,7 +12,7 @@ interface Props {
     onPress: () => void
 }
 
-const ProductCard = ({product, onPress}: Props) => {
+const SearchProductCard = ({product, onPress}: Props) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Surface style={styles.container}>
@@ -28,7 +28,7 @@ const ProductCard = ({product, onPress}: Props) => {
   );
 };
 
-export default ProductCard;
+export default SearchProductCard;
 
 export const styles = StyleSheet.create({
   container: {
