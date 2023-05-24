@@ -1,3 +1,4 @@
+import Analytics from 'appcenter-analytics';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 import React, { useEffect } from 'react';
@@ -37,6 +38,7 @@ const Main = ({navigation}: Props) => {
   }
 
   useEffect(() => {
+    Analytics.trackEvent("Main Screen oppened")
     dispatch(fetchProducts());
     setHeader()
   }, []);
