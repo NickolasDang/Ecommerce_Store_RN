@@ -9,13 +9,14 @@ import { Product } from '../data/Product';
 
 interface Props {
     product: Product,
-    onPress: () => void
+    onPress: () => void,
+    testID?: string | undefined
 }
 
-const ProductCard = ({product, onPress}: Props) => {
+const ProductCard = ({product, onPress, testID}: Props) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Surface style={styles.container}>
+      <Surface style={styles.container} testID={testID}>
         <Image style={styles.image} source={{uri: product.img}} />
         <ProductName name={product.name} />
         <Price

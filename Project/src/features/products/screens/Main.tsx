@@ -58,7 +58,7 @@ const Main = ({navigation}: Props) => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView testID='main-screen'>
       <Surface style={{backgroundColor: Colors.white}}>
         <TouchableOpacity onPress={navigateToSearchScreen}>
         <ProductSearchBar/>
@@ -75,7 +75,7 @@ const Main = ({navigation}: Props) => {
             }}
             data={data.products}
             renderItem={ ({item}) => (
-              <ProductCard
+              <ProductCard testID={`product-card-${data.products.indexOf(item)}`}
                 product= {item} 
                 onPress={() => navigateToProductDetail(item)}
               />

@@ -21,8 +21,13 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import cartSlice from '../myCart/slice/cartSlice';
 import { CartItem } from '../myCart/data/CartItem';
 import { store } from '../../app/store';
+import { MainStackProps } from '../../navigation/MainStack';
+import { CompositeScreenProps } from '@react-navigation/native';
 
-type Props = StackScreenProps<AppStackProps, "ProductDetail">
+type Props = CompositeScreenProps<
+  StackScreenProps<MainStackProps, "ProductDetail">,
+  StackScreenProps<AppStackProps>
+>
 
 const ProductDetail = ({route, navigation}: Props) => {
   const {product} = route.params;
@@ -74,7 +79,7 @@ const ProductDetail = ({route, navigation}: Props) => {
   }, [])
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1}} testID='product-detail-screen'>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{marginHorizontal: 20}}>

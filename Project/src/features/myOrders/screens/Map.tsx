@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import MapView, { Marker } from 'react-native-maps';
-import { requestLocationPermission } from '../../permissions/RequestPermissions';
 import { ILocation } from '../data/Ilocation';
+import { requestLocationPermission } from '../../../app/permissions';
 
 type Props = {}
 
