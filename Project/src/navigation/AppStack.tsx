@@ -9,20 +9,20 @@ export type AppStackProps = {
   Login: undefined
 }
 
-const Stack = createStackNavigator<AppStackProps>()
+const { Screen, Navigator } = createStackNavigator<AppStackProps>()
 
 const AppStack = () => {
   return (
     <NavigationContainer>
-        <Stack.Navigator>
-        <Stack.Screen
+        <Navigator>
+        <Screen
           name="DrawerStack"
           component={DrawerStack}
           options={{headerShown: false}}
         />
        
-        <Stack.Screen name='Login' component={Login}/>
-        </Stack.Navigator>
+        <Screen name='Login' component={Login}/>
+        </Navigator>
     </NavigationContainer>
   )
 }

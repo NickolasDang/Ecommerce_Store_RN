@@ -1,15 +1,14 @@
+import 'react-native-gesture-handler';
+import { NavigatorScreenParams } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
 import HeaderButton from '../components/HeaderButton';
 import Colors from '../constants/Colors';
 import { BACK_ARROW_ICON_IMG, MENU_ICON_IMG, MY_CART_ICON_WHITE_IMG } from '../constants/Images';
-import LogoutDialog from '../features/myProfile/screens/LogoutDialog';
-import MyProfile from '../features/myProfile/screens/MyProfile';
-import { Product } from '../features/products/data/Product';
-import ModalStack, { ModalStackProps } from './ModalStack';
 import ProductDetail from '../features/productDetail/ProductDetail';
+import { Product } from '../features/products/data/Product';
 import Main from '../features/products/screens/Main';
 import Search from '../features/products/screens/Search';
+import ModalStack, { ModalStackProps } from './ModalStack';
 
 export type MainStackProps = {
     Main: undefined,
