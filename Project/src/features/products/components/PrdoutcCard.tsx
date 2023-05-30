@@ -5,31 +5,24 @@ import Price from '../../../components/product/Price';
 import ProductName from '../../../components/product/ProductName';
 import {StyleSheet} from 'react-native';
 import Colors from '../../../constants/Colors';
-
-export type Product = {
-    id: String,
-    img: any,
-    name: String,
-    price: String,
-    priceBefore?: String
-    percentOff?: String
-}
+import { Product } from '../data/Product';
 
 interface Props {
     product: Product,
-    onPress: () => void
+    onPress: () => void,
+    testID?: string | undefined
 }
 
-const ProductCard: React.FC<Props> = (props: Props) => {
+const ProductCard = ({product, onPress, testID}: Props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <Surface style={styles.container}>
-        <Image style={styles.image} source={{uri: props.product.img}} />
-        <ProductName name={props.product.name} />
+    <TouchableOpacity onPress={onPress}>
+      <Surface style={styles.container} testID={testID}>
+        <Image style={styles.image} source={{uri: product.img}} />
+        <ProductName name={product.name} />
         <Price
-          priceNow={props.product.price}
-          priceBefore={props.product.priceBefore}
-          percentOff={props.product.percentOff}
+          priceNow={product.price}
+          priceBefore={product.priceBefore}
+          percentOff={product.percentOff}
         />
       </Surface>
     </TouchableOpacity>

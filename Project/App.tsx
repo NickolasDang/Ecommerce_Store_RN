@@ -1,11 +1,12 @@
+import codePush from "react-native-code-push";
 import 'react-native-gesture-handler';
 import AppStack from './src/navigation/AppStack';
 
-function App() {
+const App = () => {
 
   return (
     <AppStack/>
   );
 }
 
-export default App;
+export default codePush(App);
