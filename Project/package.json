@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test-e2e": "detox test --configuration android.emu.dev.debug",
-    "test-ui": "jest --testPathPattern=__tests__"
+    "test-ui": "jest --testPathPattern=__tests__",
+    "build:dev-apk": "cd android && gradlew assembleDevRelease"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.18.1",
