@@ -1,14 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text} from 'react-native';
+import React from 'react';
 
-type Props = {}
-
-const MyWishList = (props: Props) => {
+const MyWishList = () => {
   return (
     <View>
       <Text>MyWishList</Text>
     </View>
-  )
-}
+  );
+};
 
-export default MyWishList
+export default MyWishList;

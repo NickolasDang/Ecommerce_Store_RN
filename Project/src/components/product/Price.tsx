@@ -3,10 +3,10 @@ import React from 'react';
 import Colors from '../../constants/Colors';
 
 interface Props {
-    priceNow?: String,
-    priceBefore?: String,
-    percentOff?: String,
-    style?: any
+  priceNow?: String;
+  priceBefore?: String;
+  percentOff?: String;
+  style?: any;
 }
 
 const Price: React.FC<Props> = ({priceNow, priceBefore, percentOff, style}) => {

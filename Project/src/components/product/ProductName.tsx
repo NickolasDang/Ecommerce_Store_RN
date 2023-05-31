@@ -3,8 +3,8 @@ import React from 'react';
 import Colors from '../../constants/Colors';
 
 interface Props {
-    name: String,
-    style?: any
+  name: String;
+  style?: any;
 }
 
 const ProductName: React.FC<Props> = ({name, style}) => {

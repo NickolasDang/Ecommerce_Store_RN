@@ -1,10 +1,10 @@
 import React from 'react';
 import {SUCCESS_DIALOG_IMG} from '../../../../constants/Images';
 import OneOptionDialog from '../../../../components/OneOptionDIalog';
-import { StackScreenProps } from '@react-navigation/stack';
-import { ModalStackProps } from '../../../../navigation/ModalStack';
+import {StackScreenProps} from '@react-navigation/stack';
+import {ModalStackProps} from '../../../../navigation/ModalStack';
 
-type Props = StackScreenProps<ModalStackProps, 'ProductAddedDialog'>
+type Props = StackScreenProps<ModalStackProps, 'ProductAddedDialog'>;
 
 const ProductAddedDialog = ({navigation}: Props) => {
   return (

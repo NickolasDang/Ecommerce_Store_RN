@@ -1,85 +1,81 @@
 import React, { useEffect, useState } from 'react';
 import {
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
+import { CompositeScreenProps } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
+import { useAppDispatch } from '../../app/hooks';
 import BaseButton from '../../components/base/BaseButton';
-import HeaderButton from '../../components/HeaderButton';
+import { MyCartHeaderButton } from '../../components/headerButtons/MyCartHeaderButton';
+import { MyWishListHeaderButton } from '../../components/headerButtons/MyWishListHeaderButton';
 import Price from '../../components/product/Price';
 import ProductName from '../../components/product/ProductName';
 import Colors from '../../constants/Colors';
-import { MY_CART_ICON_WHITE_IMG, MY_WISH_LIST_ICON_WHITE_IMG } from '../../constants/Images';
 import { AppStackProps } from '../../navigation/AppStack';
-import ImageCarousel from './components/imageCarousel/ImageCarousel';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import cartSlice from '../myCart/slice/cartSlice';
-import { CartItem } from '../myCart/data/CartItem';
-import { store } from '../../app/store';
 import { MainStackProps } from '../../navigation/MainStack';
-import { CompositeScreenProps } from '@react-navigation/native';
+import { CartItem } from '../myCart/data/CartItem';
+import cartSlice from '../myCart/slice/cartSlice';
+import ImageCarousel from './components/imageCarousel/ImageCarousel';
 
 type Props = CompositeScreenProps<
-  StackScreenProps<MainStackProps, "ProductDetail">,
+  StackScreenProps<MainStackProps, 'ProductDetail'>,
   StackScreenProps<AppStackProps>
->
+>;
 
+const HeaderButtons = (navigation: any) => {
+  return(
+    <View style={{flexDirection: 'row'}}>
+    <MyWishListHeaderButton/>
+    <MyCartHeaderButton navigation={navigation}/>
+  </View>
+  )
+}
 const ProductDetail = ({route, navigation}: Props) => {
   const {product} = route.params;
   const [color, setColor] = useState('');
-  const isCartEmpty = useAppSelector(state => state.cart.cart.cartItems.length === 0)
 
-  const dispatch = useAppDispatch()
-
-  const navigateToMyCart = () => {
-    const screenName = isCartEmpty ? 'MyCartEmpty' : 'MyCart'
-    navigation.navigate('DrawerStack', {screen: 'MyCartStack', params: {screen: screenName}});
-  };
+  const dispatch = useAppDispatch();
 
   const setHeader = () => {
     navigation.setOptions({
-        title: '',
-        headerStyle: {
-            backgroundColor: Colors.blue300
-          },
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Colors.white
-          },
-          headerTintColor: Colors.white,
-          headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <HeaderButton img={MY_WISH_LIST_ICON_WHITE_IMG}/>
-            <HeaderButton img={MY_CART_ICON_WHITE_IMG} onPress={() => navigateToMyCart()}/>
-            </View>
-          )
-    })
-  }
+      title: '',
+      headerStyle: {
+        backgroundColor: Colors.blue300,
+      },
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        color: Colors.white,
+      },
+      headerTintColor: Colors.white,
+      headerRight: () => (HeaderButtons(navigation)),
+    });
+  };
 
   const addProduct = () => {
-    const screenName = color == '' ? 'SelectColorDialog' : 'ProductAddedDialog';
-    if(screenName === 'ProductAddedDialog') {
+    const screenName = color === '' ? 'SelectColorDialog' : 'ProductAddedDialog';
+    if (screenName === 'ProductAddedDialog') {
       const cartItem: CartItem = {
         id: `${Math.floor(Math.random() * 100)}`,
         item: product,
-        amount: 1
-      }
-      dispatch(cartSlice.actions.addToCart(cartItem))
+        amount: 1,
+      };
+      dispatch(cartSlice.actions.addToCart(cartItem));
     }
     navigation.navigate('ModalStack', {screen: screenName});
   };
 
   useEffect(() => {
-    setHeader()
-  }, [])
+    setHeader();
+  });
 
   return (
-    <SafeAreaView style={{flex: 1}} testID='product-detail-screen'>
+    <SafeAreaView style={{flex: 1}} testID="product-detail-screen">
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{marginHorizontal: 20}}>

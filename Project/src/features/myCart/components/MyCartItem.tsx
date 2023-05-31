@@ -1,28 +1,27 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Surface, Text } from 'react-native-paper';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Surface, Text} from 'react-native-paper';
 import BaseDescriptionText from '../../../components/base/BaseDescriptionText';
 import Price from '../../../components/product/Price';
 import ProductName from '../../../components/product/ProductName';
 import Colors from '../../../constants/Colors';
-import { DELETE_ICON_IMG } from '../../../constants/Images';
-import { CartItem } from '../data/CartItem';
+import {DELETE_ICON_IMG} from '../../../constants/Images';
+import {CartItem} from '../data/CartItem';
 import AmountRegulationButton from './AmountRegulationButton';
 
 interface Props {
-    cartItem: CartItem,
-    onRemoveItemPress?: ()=> void | undefined
+  cartItem: CartItem;
+  onRemoveItemPress?: () => void | undefined;
 }
 
 const MyCartItem = ({cartItem, onRemoveItemPress}: Props) => {
-
   return (
     <Surface style={styles.container}>
       <View style={{flexDirection: 'row'}}>
-        <Image style={styles.image} source={{uri: cartItem.item.img }} />
+        <Image style={styles.image} source={{uri: cartItem.item.img}} />
         <View style={{justifyContent: 'center'}}>
           <ProductName name={cartItem.item.name} />
-          <BaseDescriptionText text='Color: Blue' style={{textAlign: 'left'}}/>
+          <BaseDescriptionText text="Color: Blue" style={{textAlign: 'left'}} />
           <Price
             priceNow={cartItem.item.price}
             priceBefore={cartItem.item.priceBefore}
@@ -32,12 +31,14 @@ const MyCartItem = ({cartItem, onRemoveItemPress}: Props) => {
       </View>
 
       <View style={styles.bottomContainer}>
-        <AmountRegulationButton text='+'/>
+        <AmountRegulationButton text="+" />
         <Text style={{marginHorizontal: 15}}>{cartItem.amount}</Text>
-        <AmountRegulationButton text='-'/>
+        <AmountRegulationButton text="-" />
 
-        <TouchableOpacity onPress={onRemoveItemPress} style={{position: 'absolute', right: 0 }}>
-          <Image source={DELETE_ICON_IMG}/>
+        <TouchableOpacity
+          onPress={onRemoveItemPress}
+          style={{position: 'absolute', right: 0}}>
+          <Image source={DELETE_ICON_IMG} />
         </TouchableOpacity>
       </View>
     </Surface>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     padding: 10,
     borderRadius: 5,
-    marginBottom: 15
+    marginBottom: 15,
   },
   image: {
     width: 100,
@@ -64,6 +65,6 @@ const styles = StyleSheet.create({
   bottomContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 5
-  }
+    marginTop: 5,
+  },
 });

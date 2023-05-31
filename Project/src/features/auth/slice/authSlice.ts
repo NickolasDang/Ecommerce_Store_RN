@@ -11,16 +11,24 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     loading: state => {
-      (state.loading = true), (state.isLogged = false), (state.erorr = false);
+      state.loading = true 
+      state.isLogged = false
+      state.erorr = false
     },
     showError: state => {
-      (state.loading = false), (state.isLogged = false), (state.erorr = true);
+      state.loading = false 
+      state.isLogged = false
+      state.erorr = true
     },
     login: state => {
-      (state.loading = false), (state.isLogged = true), (state.erorr = false);
+      state.loading = false 
+      state.isLogged = true
+      state.erorr = false
     },
     logout: state => {
-      (state.loading = false), (state.isLogged = false), (state.erorr = false);
+      state.loading = false 
+      state.isLogged = false
+      state.erorr = false
     },
   },
 });

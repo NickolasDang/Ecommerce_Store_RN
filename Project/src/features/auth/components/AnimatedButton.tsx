@@ -1,32 +1,30 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Animated, {
-    interpolate,
-    interpolateColor,
-    useAnimatedStyle,
-    useDerivedValue,
-    withDelay,
-    withSequence,
-    withSpring,
-    withTiming
+  interpolate,
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  withDelay,
+  withSequence,
+  withSpring,
+  withTiming,
 } from 'react-native-reanimated';
 import Colors from '../../../constants/Colors';
 import AnimatedCross from './AnimatedCross';
 import LoadingDots from './LoadingDots';
-import { forwardRef } from 'react-native-paper/lib/typescript/src/utils/forwardRef';
 
 interface Props {
-    text: string,
-    style?: any | undefined,
-    onPress?: () => void | undefined,
-    isSuccess: boolean,
+  text: string;
+  onPress?: () => void | undefined;
 }
 
-export const wait = (numMs: number) => new Promise(res => setTimeout(() => res, numMs));
+export const wait = (numMs: number) =>
+  new Promise(res => setTimeout(() => res, numMs));
 
-const AnimatedButton = ({text, style, onPress, isSuccess}: Props) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+const AnimatedButton = ({text, onPress}: Props) => {
+  const [loading] = useState(false);
+  const [error] = useState(false);
 
   const progress = useDerivedValue(() => {
     if (error) {
@@ -58,29 +56,17 @@ const AnimatedButton = ({text, style, onPress, isSuccess}: Props) => {
     };
   });
 
-//   const errorAnimation = () => {
-//     setLoading(true)
-//     sleep(3000).then(r => {
-//       setError(true);
-//     });
-//     sleep(4000).then(r => {
-//       setError(false);
-//       setLoading(false);
-//     });
-//   };
+  // const handleOnPress = useCallback(async () => {
+  //   setLoading(true);
+  //   await wait(3000);
 
-  const handleOnPress = useCallback(async () => {
-    setLoading(true)
-    await wait(3000);
-    () => onPress;
-
-    if(isSuccess) {
-        setLoading(false);
-    } else {
-        setError(true)
-        setLoading(false)
-    }
-  }, [isSuccess])
+  //   if (isSuccess) {
+  //     setLoading(false);
+  //   } else {
+  //     setError(true);
+  //     setLoading(false);
+  //   }
+  // }, [isSuccess]);
 
   return (
     <TouchableWithoutFeedback onPress={onPress} disabled={loading}>
@@ -116,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Roboto',
     letterSpacing: 1.25,
-    fontWeight: "500",
+    fontWeight: '500',
     textTransform: 'uppercase',
   },
 });

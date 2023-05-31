@@ -1,7 +1,7 @@
-import { Product } from "../../products/data/Product"
+import {Product} from '../../products/data/Product';
 
 export interface CartItem {
-    id: string,
-    item: Product,
-    amount: number
+  id: string;
+  item: Product;
+  amount: number;
 }

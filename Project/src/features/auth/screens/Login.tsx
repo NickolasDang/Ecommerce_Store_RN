@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { useAppDispatch } from '../../../app/hooks';
@@ -11,36 +11,36 @@ import { AppStackProps } from '../../../navigation/AppStack';
 import AnimatedButton from '../components/AnimatedButton';
 import { authSlice } from '../slice/authSlice';
 
-type Props = StackScreenProps<AppStackProps>
+type Props = StackScreenProps<AppStackProps>;
 
 const Login = ({navigation}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogged, setLogged] = useState(false)
+  const [isLogged, setLogged] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const setUpHeader = () => {
     navigation.setOptions({
-        title: '',
-        headerLeft: () => null
-    })
-  }
+      title: '',
+      headerLeft: () => null,
+    });
+  };
 
   const login = () => {
     dispatch(authSlice.actions.login());
-    navigation.goBack()
-  }
-
-  //TODO: Still not working properly. Need to find how to manage state of animated button 
-  const validation = () => {
-        setLogged(true)
-        login()
+    navigation.goBack();
   };
-8
+
+  //TODO: Still not working properly. Need to find how to manage state of animated button
+  const validation = () => {
+    setLogged(true);
+    login();
+  };
+  
   useEffect(() => {
-    setUpHeader()
-  }, [])
+    setUpHeader();
+  });
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -65,7 +65,10 @@ const Login = ({navigation}: Props) => {
           value={password}
           onChangeText={password => setPassword(password)}
         />
-        <BaseLinkText text={'Forgot Password?'} textStyle={{marginBottom: 35}} />
+        <BaseLinkText
+          text={'Forgot Password?'}
+          textStyle={{marginBottom: 35}}
+        />
         <BaseButton text={'Login'} onPress={validation} />
         <BaseLinkText
           text={'New here? Sign Up'}
@@ -77,7 +80,11 @@ const Login = ({navigation}: Props) => {
           styles.container,
           {flexDirection: 'column-reverse', marginBottom: 30},
         ]}>
-        <AnimatedButton text={'skip login'} onPress={validation} isSuccess={isLogged}/>
+        <AnimatedButton
+          text={'skip login'}
+          onPress={validation}
+          isSuccess={isLogged}
+        />
       </View>
     </SafeAreaView>
   );

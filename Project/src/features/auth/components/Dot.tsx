@@ -2,11 +2,11 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import Animated from 'react-native-reanimated';
 import Colors from '../../../constants/Colors';
-import { StyleProp } from 'react-native';
-import { ViewStyle } from 'react-native';
+import {StyleProp} from 'react-native';
+import {ViewStyle} from 'react-native';
 
 interface Props {
-    style?: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>> | undefined
+  style?: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>> | undefined;
 }
 
 const Dot = ({style}: Props) => {

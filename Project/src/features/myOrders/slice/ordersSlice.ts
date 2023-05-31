@@ -1,13 +1,13 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Order } from '../data/Order';
-import { Cart } from '../../myCart/data/Cart';
+import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {Order} from '../data/Order';
+import {Cart} from '../../myCart/data/Cart';
 
 type OrderState = {
-    orders: Order[]
-}
+  orders: Order[];
+};
 
 const initialState: OrderState = {
-  orders: []
+  orders: [],
 };
 
 function padTo2Digits(num: number) {
@@ -37,12 +37,12 @@ const ordersSlice = createSlice({
     addOrder: (state, action: PayloadAction<Cart>) => {
       const order: Order = {
         id: `${Math.floor(Math.random() * 100)}`,
-        date: formatDate(new Date),
-        orderItems: action.payload.cartItems.map(cartItem => cartItem.item)
-      }
-      state.orders.push(order)
-    }
-  }
+        date: formatDate(new Date()),
+        orderItems: action.payload.cartItems.map(cartItem => cartItem.item),
+      };
+      state.orders.push(order);
+    },
+  },
 });
 
 export default ordersSlice;

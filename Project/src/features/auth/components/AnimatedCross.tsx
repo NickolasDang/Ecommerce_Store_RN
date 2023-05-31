@@ -29,7 +29,7 @@ const AnimatedCross = () => {
 
   useEffect(() => {
     progress.value = withSpring(1);
-  }, []);
+  });
 
   return (
     <View style={styles.container}>
