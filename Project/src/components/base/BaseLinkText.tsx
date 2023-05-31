@@ -1,12 +1,17 @@
-import {StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import Colors from '../../constants/Colors';
 
 interface Props {
-    text: string,
-    textStyle?: StyleProp<TextStyle> | undefined,
-    onPress?: () => void | undefined
-
+  text: string;
+  textStyle?: StyleProp<TextStyle> | undefined;
+  onPress?: () => void | undefined;
 }
 const BaseLinkText = ({text, textStyle, onPress}: Props) => {
   return (

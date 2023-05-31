@@ -6,10 +6,10 @@ import BaseTitleText from './base/BaseTitleText';
 import BaseDescriptionText from './base/BaseDescriptionText';
 
 interface Props {
-    icon?: any | undefined,
-    title: string ,
-    description?: string | undefined,
-    onPress: () => void
+  icon?: any | undefined;
+  title: string;
+  description?: string | undefined;
+  onPress: () => void;
 }
 
 const OneOptionDialog = ({icon, title, description, onPress}: Props) => {

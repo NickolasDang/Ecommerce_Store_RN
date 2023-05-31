@@ -2,9 +2,9 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 interface Props {
-    icon: any,
-    text: string,
-    onPress?: () => void | Promise<void> | undefined
+  icon: any;
+  text: string;
+  onPress?: () => void | Promise<void> | undefined;
 }
 
 const DrawerItem = ({icon, text, onPress}: Props) => {

@@ -1,8 +1,7 @@
-import { Product } from "../../products/data/Product"
-
+import {Product} from '../../products/data/Product';
 
 export type Order = {
-    id: String,
-    date: string,
-    orderItems: Product[]
-}
+  id: String;
+  date: string;
+  orderItems: Product[];
+};

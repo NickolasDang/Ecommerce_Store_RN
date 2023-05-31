@@ -1,6 +1,6 @@
 import { CompositeScreenProps } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import BaseButton from '../../../components/base/BaseButton';
 import BaseDescriptionText from '../../../components/base/BaseDescriptionText';
@@ -9,23 +9,19 @@ import BaseTitleText from '../../../components/base/BaseTitleText';
 import { MY_ORDERS_LOGIN_FIRST_IMG } from '../../../constants/Images';
 import { AppStackProps } from '../../../navigation/AppStack';
 import { MyOrdersStackProps } from '../../../navigation/MyOrdersStack';
-import HeaderButton from '../../../components/HeaderButton';
-import { BACK_ARROW_ICON_IMG } from '../../../constants/Images';
 
-type Props = CompositeScreenProps< 
+type Props = CompositeScreenProps<
   StackScreenProps<MyOrdersStackProps, 'MyOrdersLoginFirst'>,
   StackScreenProps<AppStackProps>
->
+>;
 
 const MyOrdersLoginFirst = ({navigation}: Props) => {
-
   const navigateToLogin = () => {
-    navigation.navigate('Login')
+    navigation.navigate('Login');
   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
-
       <View style={styles.container}>
         <Image source={MY_ORDERS_LOGIN_FIRST_IMG} />
         <BaseTitleText

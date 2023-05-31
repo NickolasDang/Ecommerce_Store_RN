@@ -1,30 +1,29 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 import BaseButton from './base/BaseButton';
 import BaseDescriptionText from './base/BaseDescriptionText';
 import BaseTitleText from './base/BaseTitleText';
 
 interface Props {
-    icon?: any | undefined,
-    title: string ,
-    description?: string | undefined,
-    negativeButtonText?: string | undefined
-    positiveButtonText?: string | undefined,
-    onNegativeButtonPress?: () => void | undefined,
-    onPossitiveButtonPress?: () => void | undefined
+  icon?: any | undefined;
+  title: string;
+  description?: string | undefined;
+  negativeButtonText?: string | undefined;
+  positiveButtonText?: string | undefined;
+  onNegativeButtonPress?: () => void | undefined;
+  onPossitiveButtonPress?: () => void | undefined;
 }
 
 const TwoOptionsDialog = ({
-    icon,
-    title,
-    description,
-    negativeButtonText,
-    positiveButtonText,
-    onNegativeButtonPress,
-    onPossitiveButtonPress
+  icon,
+  title,
+  description,
+  negativeButtonText,
+  positiveButtonText,
+  onNegativeButtonPress,
+  onPossitiveButtonPress,
 }: Props) => {
-
   return (
     <View style={styles.background}>
       <View style={styles.container}>
@@ -34,8 +33,19 @@ const TwoOptionsDialog = ({
           <BaseDescriptionText text={description} style={{marginTop: 10}} />
         )}
         <View style={{flexDirection: 'row'}}>
-            <BaseButton text={negativeButtonText} style={[styles.button, {backgroundColor: Colors.red, marginRight: 5} ]} onPress={onNegativeButtonPress} />
-            <BaseButton text={positiveButtonText} style={[styles.button, {marginLeft: 5}]} onPress={onPossitiveButtonPress} />
+          <BaseButton
+            text={negativeButtonText}
+            style={[
+              styles.button,
+              {backgroundColor: Colors.red, marginRight: 5},
+            ]}
+            onPress={onNegativeButtonPress}
+          />
+          <BaseButton
+            text={positiveButtonText}
+            style={[styles.button, {marginLeft: 5}]}
+            onPress={onPossitiveButtonPress}
+          />
         </View>
       </View>
     </View>

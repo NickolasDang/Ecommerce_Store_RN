@@ -1,15 +1,14 @@
 import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
-import {Surface} from 'react-native-paper';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Surface } from 'react-native-paper';
 import Price from '../../../components/product/Price';
 import ProductName from '../../../components/product/ProductName';
-import {StyleSheet} from 'react-native';
 import Colors from '../../../constants/Colors';
 import { Product } from '../data/Product';
 
 interface Props {
-    product: Product,
-    onPress: () => void
+  product: Product;
+  onPress: () => void;
 }
 
 const SearchProductCard = ({product, onPress}: Props) => {

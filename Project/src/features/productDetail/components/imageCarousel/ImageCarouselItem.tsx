@@ -2,17 +2,13 @@ import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
 export interface ImageCarouselItemProps {
-    img: string
+  img: string;
 }
 
 const ImageCarouselItem: React.FC<ImageCarouselItemProps> = ({img}) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={{uri: img}}
-        resizeMode="contain"
-        style={styles.image}
-      />
+      <Image source={{uri: img}} resizeMode="contain" style={styles.image} />
     </View>
   );
 };

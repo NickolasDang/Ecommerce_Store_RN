@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Colors from '../../constants/Colors';
-import { StyleProp } from 'react-native';
-import { TextStyle } from 'react-native';
-import { ViewStyle } from 'react-native';
+import {StyleProp} from 'react-native';
+import {TextStyle} from 'react-native';
+import {ViewStyle} from 'react-native';
 
 interface Props {
-    text: string,
-    textStyle?: StyleProp<TextStyle> | undefined,
-    containerStyle?: StyleProp<ViewStyle> | undefined
+  text: string;
+  textStyle?: StyleProp<TextStyle> | undefined;
+  containerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
 const BaseHeaderText = ({text, textStyle, containerStyle}: Props) => {

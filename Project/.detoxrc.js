@@ -23,11 +23,11 @@ module.exports = {
       build:
         'xcodebuild -workspace ios/YOUR_APP.xcworkspace -scheme YOUR_APP -configuration Release -sdk iphonesimulator -derivedDataPath ios/build',
     },
-    'android.debug': {
+    'dev.android.debug': {
       type: 'android.apk',
-      binaryPath: 'android/app/build/outputs/apk/debug/app-debug.apk',
+      binaryPath: 'android/app/build/outputs/apk/dev/debug/app-dev-debug.apk',
       build:
-        'cd android && gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
+        'cd android && gradlew assembleDevDebug assembleDevDebugAndroidTest -DtestBuildType=debug',
       reversePorts: [8081],
     },
     'android.release': {
@@ -77,6 +77,10 @@ module.exports = {
     'android.emu.debug': {
       device: 'emulator',
       app: 'android.debug',
+    },
+    'android.emu.dev.debug': {
+      device: 'emulator',
+      app: 'dev.android.debug',
     },
     'android.emu.release': {
       device: 'emulator',

@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, TextStyle, View} from 'react-native';
 import Colors from '../../constants/Colors';
-import { StyleProp } from 'react-native';
-import { ViewStyle } from 'react-native';
+import {StyleProp} from 'react-native';
+import {ViewStyle} from 'react-native';
 
-interface Props{
-    text: string,
-    style?: StyleProp<TextStyle> | undefined,
-    containerStyle?: StyleProp<ViewStyle> | undefined
+interface Props {
+  text: string;
+  style?: StyleProp<TextStyle> | undefined;
+  containerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
 const BaseDescriptionText = ({text, style, containerStyle}: Props) => {
@@ -21,13 +21,11 @@ const BaseDescriptionText = ({text, style, containerStyle}: Props) => {
 export default BaseDescriptionText;
 
 const styles = StyleSheet.create({
-  container: {
-    
-  },
+  container: {},
   description: {
     fontSize: 15,
     fontFamily: 'Roboto',
-    fontWeight: "400",
+    fontWeight: '400',
     color: Colors.neutral500,
   },
 });

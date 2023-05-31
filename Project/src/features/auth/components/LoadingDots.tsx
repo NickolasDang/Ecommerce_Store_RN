@@ -8,12 +8,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import Dot from './Dot';
-import { StyleProp } from 'react-native';
-import { ViewStyle } from 'react-native';
-
+import {StyleProp} from 'react-native';
+import {ViewStyle} from 'react-native';
 
 interface Props {
-    style?: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>> | undefined
+  style?: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>> | undefined;
 }
 
 const LoadingDots = ({style}: Props) => {

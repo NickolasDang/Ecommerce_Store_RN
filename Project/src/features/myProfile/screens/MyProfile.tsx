@@ -1,63 +1,70 @@
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { useEffect, useState } from 'react'
-import { Image, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
-import { ImageLibraryOptions, launchImageLibrary } from 'react-native-image-picker'
-import { TextInput } from 'react-native-paper'
-import { getData, storeData } from '../../../app/asyncStorage'
-import BaseButton from '../../../components/base/BaseButton'
-import Colors from '../../../constants/Colors'
-import { MY_PROFILE_AVATAR } from '../../../constants/Images'
-import { MyProfileStackProps } from '../../../navigation/MyProfileStack'
+import {StackScreenProps} from '@react-navigation/stack';
+import React, {useEffect, useState} from 'react';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import {
+  ImageLibraryOptions,
+  launchImageLibrary,
+} from 'react-native-image-picker';
+import {TextInput} from 'react-native-paper';
+import {getData, storeData} from '../../../app/asyncStorage';
+import BaseButton from '../../../components/base/BaseButton';
+import Colors from '../../../constants/Colors';
+import {MY_PROFILE_AVATAR} from '../../../constants/Images';
+import {MyProfileStackProps} from '../../../navigation/MyProfileStack';
 
-type Props = StackScreenProps<MyProfileStackProps, 'MyProfile'>
+type Props = StackScreenProps<MyProfileStackProps, 'MyProfile'>;
 
-const AVATAR_KEY = 'MyProfileAvatar'
+const AVATAR_KEY = 'MyProfileAvatar';
 
 const MyProfile = ({navigation}: Props) => {
-  const [avatar, setAvatar] = useState(MY_PROFILE_AVATAR)
-  const [name, setName] = useState('')
+  const [avatar, setAvatar] = useState(MY_PROFILE_AVATAR);
+  const [name, setName] = useState('');
 
-  const getProfileAvatar = async() => {
-    const avatar = await getData(AVATAR_KEY)
+  const getProfileAvatar = async () => {
+    const avatar = await getData(AVATAR_KEY);
     if (avatar !== null) {
-      setAvatar(avatar)
+      setAvatar(avatar);
     }
-  }
+  };
 
-  const pickNewProfilePicture = async() => {
+  const pickNewProfilePicture = async () => {
     const options: ImageLibraryOptions = {
       mediaType: 'photo',
-      includeBase64: true
+      includeBase64: true,
     }
-    const result = await launchImageLibrary(options, response => {
+    await launchImageLibrary(options, response => {
       if (response.didCancel) {
         console.log('User cancelled image picker');
-      }
-      else if (response.errorMessage !== undefined) {
+      } else if (response.errorMessage !== undefined) {
         console.log('ImagePicker Error: ', response.errorMessage);
-      }
-      else {
-        if(response.assets !== undefined) {
-          const uri =  response.assets[0].uri
-          storeData(AVATAR_KEY, uri)
-          getProfileAvatar()
+      } else {
+        if (response.assets !== undefined) {
+          const uri = response.assets[0].uri;
+          storeData(AVATAR_KEY, uri);
+          getProfileAvatar();
         }
       }
     });
-  }
+  };
 
   const logout = () => {
-    navigation.navigate('LogoutDialog')
-  }
+    navigation.navigate('LogoutDialog');
+  };
 
   useEffect(() => {
-    getProfileAvatar
-  }, [])
+    getProfileAvatar;
+  }, []);
 
   return (
-    <SafeAreaView style={styles.container}> 
+    <SafeAreaView style={styles.container}>
     <ScrollView showsVerticalScrollIndicator={false}>
-      <TextInput
+        <TextInput
           style={{marginBottom: 30}}
           mode="outlined"
           label={'Full name'}
@@ -66,11 +73,14 @@ const MyProfile = ({navigation}: Props) => {
           onChangeText={name => setName(name)}
         />
 
-        <TouchableOpacity onPress={pickNewProfilePicture} style={{alignSelf: 'center'}}>
-          {avatar === MY_PROFILE_AVATAR ?
-            (<Image style={styles.avatar} source={avatar}/>) :
-            (<Image style={styles.avatar} source={{uri:avatar}}/>)
-          }
+        <TouchableOpacity
+          onPress={pickNewProfilePicture}
+          style={{alignSelf: 'center'}}>
+          {avatar === MY_PROFILE_AVATAR ? (
+            <Image style={styles.avatar} source={avatar} />
+          ) : (
+            <Image style={styles.avatar} source={{uri: avatar}} />
+          )}
         </TouchableOpacity>
 
         <TextInput
@@ -79,15 +89,17 @@ const MyProfile = ({navigation}: Props) => {
           label={'Mobile Number'}
           activeOutlineColor={Colors.blue300}
           value={name}
-          onChangeText={name => setName(name)}/>
-        
+          onChangeText={name => setName(name)}
+          />
+
         <TextInput
           style={{marginBottom: 20}}
           mode="outlined"
           label={'City'}
           activeOutlineColor={Colors.blue300}
           value={name}
-          onChangeText={name => setName(name)}/>
+          onChangeText={name => setName(name)}
+        />
 
         <TextInput
           style={{marginBottom: 20}}
@@ -95,7 +107,8 @@ const MyProfile = ({navigation}: Props) => {
           label={'Locality, area or street'}
           activeOutlineColor={Colors.blue300}
           value={name}
-          onChangeText={name => setName(name)}/>
+          onChangeText={name => setName(name)}
+        />
 
         <TextInput
           style={{marginBottom: 50}}
@@ -103,17 +116,21 @@ const MyProfile = ({navigation}: Props) => {
           label={'Flat no., Building name'}
           activeOutlineColor={Colors.blue300}
           value={name}
-          onChangeText={name => setName(name)}/>
+          onChangeText={name => setName(name)}
+        />
 
-          <BaseButton text={'update'} style={{marginBottom: 20}}/>
-          <BaseButton text={'logout'} style={{marginBottom: 30}} onPress={logout}/>
-
+        <BaseButton text={'update'} style={{marginBottom: 20}} />
+        <BaseButton
+          text={'logout'}
+          style={{marginBottom: 30}}
+          onPress={logout}
+        />
       </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default MyProfile
+export default MyProfile;
 
 const styles = StyleSheet.create({
   container: {
@@ -125,7 +142,7 @@ const styles = StyleSheet.create({
     height: 120,
     resizeMode: 'cover',
     alignSelf: 'center',
-    borderRadius: 120/2,
-    marginBottom: 50
+    borderRadius: 120 / 2,
+    marginBottom: 50,
   }
 })

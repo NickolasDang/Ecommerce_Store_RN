@@ -1,14 +1,14 @@
 import React from 'react';
-import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
+import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import BaseDescriptionText from '../../../components/base/BaseDescriptionText';
 import BaseHeaderText from '../../../components/base/BaseHeaderText';
 import BaseTitleText from '../../../components/base/BaseTitleText';
-import { ORDER_CONFIRMATION_IMG } from '../../../constants/Images';
-import { StackScreenProps } from '@react-navigation/stack';
-import { MyCartStackProps } from '../../../navigation/MyCartStack';
+import {ORDER_CONFIRMATION_IMG} from '../../../constants/Images';
+import {StackScreenProps} from '@react-navigation/stack';
+import {MyCartStackProps} from '../../../navigation/MyCartStack';
 import BaseButton from '../../../components/base/BaseButton';
 
-type Props = StackScreenProps<MyCartStackProps, 'MyCartConfirmation'>
+type Props = StackScreenProps<MyCartStackProps, 'MyCartConfirmation'>;
 
 const MyCartConfirmation = ({navigation}: Props) => {
   return (
@@ -27,7 +27,11 @@ const MyCartConfirmation = ({navigation}: Props) => {
         containerStyle={{width: '80%'}}
       />
       <View style={{width: '100%', paddingHorizontal: 20}}>
-        <BaseButton text={'continue shopping'} style={styles.loginButton} onPress={navigation.goBack}/>
+        <BaseButton
+          text={'continue shopping'}
+          style={styles.loginButton}
+          onPress={navigation.goBack}
+        />
       </View>
     </SafeAreaView>
   );

@@ -1,11 +1,18 @@
-import {StyleProp, StyleSheet, Text, TouchableOpacity, View, ViewStyle} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import React from 'react';
 import Colors from '../../constants/Colors';
 
 interface Props {
-    text: string | undefined,
-    onPress?: () => void | undefined,
-    style?: StyleProp<ViewStyle> | undefined
+  text: string | undefined;
+  onPress?: () => void | undefined;
+  style?: StyleProp<ViewStyle> | undefined;
 }
 
 const BaseButton = ({text, onPress, style}: Props) => {
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Roboto',
     letterSpacing: 1.25,
-    fontWeight: "500",
+    fontWeight: '500',
     textTransform: 'uppercase',
   },
 });

@@ -1,11 +1,18 @@
 import React from 'react';
-import {StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
 import Colors from '../../constants/Colors';
 
 interface Props {
-  text: string,
-  textStyle?: StyleProp<TextStyle> | undefined
-  containerStyle?: StyleProp<ViewStyle> | undefined
+  text: string;
+  textStyle?: StyleProp<TextStyle> | undefined;
+  containerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
 const BaseTitleText: React.FC<Props> = ({text, textStyle, containerStyle}) => {

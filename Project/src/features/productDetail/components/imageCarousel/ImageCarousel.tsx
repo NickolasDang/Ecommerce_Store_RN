@@ -1,19 +1,28 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import React, {useCallback, useRef, useState} from 'react';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import  { Pagination } from 'react-native-snap-carousel-v4';
+import {Pagination} from 'react-native-snap-carousel-v4';
 import Colors from '../../../../constants/Colors';
-import { ARROW_LEFT_BUTTON_IMG, ARROW_RIGHT_BUTTON_IMG } from '../../../../constants/Images';
-import ImageCarouselItem, { ImageCarouselItemProps } from './ImageCarouselItem';
+import {
+  ARROW_LEFT_BUTTON_IMG,
+  ARROW_RIGHT_BUTTON_IMG,
+} from '../../../../constants/Images';
+import ImageCarouselItem, {ImageCarouselItemProps} from './ImageCarouselItem';
 
 interface Props {
-    data: []
+  data: [];
 }
 
 interface RenderItemProps {
-    item: ImageCarouselItemProps;
-    index: number;
-  }
+  item: ImageCarouselItemProps;
+  index: number;
+}
 
 const width = Dimensions.get('screen').width;
 
@@ -21,10 +30,8 @@ const ImageCarousel: React.FC<Props> = ({data}) => {
   const [index, setIndex] = useState(0);
   let ref = useRef(null);
 
-  const renderItem = useCallback(({ item, index }: RenderItemProps) => {
-    return (
-      <ImageCarouselItem img = {item.img}/>
-    );
+  const renderItem = useCallback(({item}: RenderItemProps) => {
+    return <ImageCarouselItem img={item.img} />;
   }, []);
 
   return (
@@ -54,11 +61,11 @@ const ImageCarousel: React.FC<Props> = ({data}) => {
       />
 
       <TouchableOpacity style={styles.arrowButtonLeft}>
-        <Image source={ARROW_LEFT_BUTTON_IMG}/>
+        <Image source={ARROW_LEFT_BUTTON_IMG} />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.arrowButtonRight}>
-        <Image source={ARROW_RIGHT_BUTTON_IMG}/>
+        <Image source={ARROW_RIGHT_BUTTON_IMG} />
       </TouchableOpacity>
     </View>
   );
