@@ -31,11 +31,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         
-      - name: Make gradlew executable
-        run: cd Project/android && chmod +x ./gradlew
-
-      - name: Run Lint
-        run: cd Project/android &&./gradlew lint
-
-      - name: Run unit tests
-        run: cd Project/android && ./gradlew test
+      - name: Run tests
+        run: yarn test
+      
+      - name: Run ESLint
+        run: yarn lint
