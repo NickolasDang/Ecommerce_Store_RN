@@ -1,0 +1,41 @@
+name: Android Test
+
+on: 
+  push:
+    branches: 
+      - '**' 
+
+jobs:
+  android-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK environment
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: "adopt"
+          cache: "gradle"
+          
+      - name: Validate graldew wrapper
+        uses: gradle/wrapper-validation-action@v1
+        
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node_veriosn: "17"
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        
+      - name: Make gradlew executable
+        run: cd Project/android && chmod +x ./gradlew
+
+      - name: Run Lint
+        run: ./gradlew lintDebug
+
+      - name: Run unit tests
+        run: ./gradlew test
