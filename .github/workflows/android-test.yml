@@ -32,7 +32,7 @@ jobs:
         run: yarn install --frozen-lockfile
       
       - name: Run ESLint
-        run: cd Project && npm run lint
+        run: cd Project && yarn run lint
         
       - name: Run tests
-        run: cd Project && npm run test-ui
+        run: cd Project && yarn run test-ui
