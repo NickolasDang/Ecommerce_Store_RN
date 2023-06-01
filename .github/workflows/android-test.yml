@@ -26,13 +26,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node_veriosn: "17"
+          node_veriosn: "16"
           
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       
       - name: Run ESLint
-        run: cd Project && yarn run lint
+        run: cd Project && npm run lint
         
       - name: Run tests
-        run: cd Project && yarn run test-ui
+        run: cd Project && npm run test-ui
